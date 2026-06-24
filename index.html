@@ -14,7 +14,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -25,6 +25,7 @@
   --d-blue:#2E6FD4; --d-violet:#8A4DE6; --d-amber:#E8920C; --d-teal:#0E9E80; --d-pink:#D6336C; --d-grey:#B4A7AD;
   --display:"Poppins",system-ui,sans-serif;
   --body:"DM Sans",system-ui,sans-serif;
+  --grotesk:"Space Grotesk",system-ui,sans-serif;
 }
 *{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
@@ -149,13 +150,13 @@ h2.head::after{content:""; display:block; width:64px; height:5px; border-radius:
 .panel.white .cost-strip .ci .n{color:var(--red);}
 .cost-strip .ci .l{font-size:.8rem; color:var(--txt2); margin-top:.3rem; line-height:1.35;}
 /* mind map */
-.mapwrap{margin-top:1.5rem; border-radius:22px; padding:1.3rem 1rem .6rem; background:var(--paper); border:1px solid var(--bd); box-shadow:0 20px 50px rgba(180,30,42,.08); perspective:1300px;}
+.mapwrap{margin-top:1.5rem; border-radius:22px; padding:1.7rem 1rem 1rem; background:radial-gradient(120% 92% at 50% 14%, #2A1320 0%, #1C0D16 52%, #120710 100%); border:1px solid rgba(230,178,60,.20); box-shadow:0 30px 70px rgba(18,4,9,.5), inset 0 1px 0 rgba(255,255,255,.05); perspective:1300px;}
 #mapStage{position:relative; width:100%;}
 .map-svg{display:block; width:100%; max-width:1180px; height:auto; margin:0 auto; transform-style:preserve-3d; will-change:transform; transition:transform .12s linear;}
 .map-legend{display:flex; flex-wrap:wrap; gap:.5rem 1.1rem; justify-content:center; padding:.4rem .6rem 0; }
-.map-legend span{display:inline-flex; align-items:center; gap:.4rem; font-size:.74rem; font-weight:600; color:var(--ink2);}
-.map-legend i{width:11px; height:11px; border-radius:50%; background:var(--c,#999); box-shadow:0 0 8px var(--c);}
-.map-legend .ml-pulse{color:var(--red); font-weight:700;}
+.map-legend span{display:inline-flex; align-items:center; gap:.4rem; font-size:.74rem; font-weight:600; color:rgba(255,236,240,.72);}
+.map-legend i{width:11px; height:11px; border-radius:50%; background:var(--c,#999); box-shadow:0 0 9px var(--c);}
+.map-legend .ml-pulse{color:#E8B53C; font-weight:700;}
 
 /* =========================== MARKET (sticky horizontal) =========================== */
 .hz-outer{position:relative;}                 /* height set by JS = 100vh + horizontal overflow */
@@ -623,8 +624,50 @@ input[type=range].biz-range::-moz-range-thumb{width:22px; height:22px; border-ra
 .signoff .q{font-family:var(--display); font-weight:700; font-size:clamp(1.3rem,3vw,2rem); color:var(--txt); line-height:1.3; max-width:46rem; margin:0 auto;}
 .signoff .q em{font-style:normal; color:var(--red);}
 .signoff .by{margin-top:1.2rem; font-size:.82rem; color:var(--txt2);}
-footer{text-align:center; padding:2.6rem 5vw; color:var(--txt3); font-size:.8rem; line-height:1.7; border-top:1px solid var(--bd); margin-top:2.5rem;}
-footer b{color:var(--txt2);}
+/* ===================== Premium signature footer (TruEstate-grade) ===================== */
+#site-footer{position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; align-items:stretch; padding:clamp(3.4rem,6vw,5.2rem) 0 0;
+  background:
+    radial-gradient(120% 86% at 50% -12%, rgba(226,55,68,.15), transparent 56%),
+    radial-gradient(98% 132% at 50% 136%, #571324 0%, #2C0810 47%, #120409 100%),
+    #0E0306;}
+#site-footer .ft-layer{position:absolute; inset:0; pointer-events:none;}
+.ft-grain{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); opacity:.04; mix-blend-mode:soft-light; z-index:1;}
+.ft-ambient{z-index:1; filter:blur(6px); background:radial-gradient(38% 56% at 16% 34%, rgba(192,24,42,.20), transparent 70%), radial-gradient(44% 64% at 86% 22%, rgba(255,78,92,.12), transparent 72%);}
+.ft-veil{z-index:2; inset:auto 0 0 0; height:42%; background:linear-gradient(180deg, transparent 0%, rgba(10,3,6,.32) 55%, rgba(10,3,6,.72) 100%);}
+/* footer top band — navigation + connect (fills the upper space) */
+.ft-top{position:relative; z-index:6; width:100%; max-width:1180px; margin:0 auto; padding:0 6vw; display:flex; flex-wrap:wrap; justify-content:space-between; gap:2.4rem 3rem;}
+.ft-intro{max-width:31rem;}
+.ft-tag{display:block; font-family:var(--grotesk); font-size:.7rem; font-weight:600; letter-spacing:.28em; text-transform:uppercase; color:rgba(255,231,234,.62);}
+.ft-blurb{margin:.85rem 0 0; font-family:var(--body); font-size:clamp(.92rem,1.1vw,1.04rem); line-height:1.6; color:rgba(255,223,226,.6);}
+.ft-totop{display:inline-flex; align-items:center; gap:.5rem; margin-top:1.15rem; font-family:var(--grotesk); font-size:.74rem; font-weight:600; letter-spacing:.06em; color:rgba(255,231,234,.78); text-decoration:none; transition:color .25s;}
+.ft-totop span{transition:transform .25s;}
+.ft-totop:hover{color:#fff;} .ft-totop:hover span{transform:translateY(-3px);}
+.ft-nav{display:flex; flex-wrap:wrap; gap:2.6rem 3.4rem;}
+.ft-col{display:flex; flex-direction:column; gap:.62rem; min-width:9rem;}
+.ft-col h4{margin:0 0 .35rem; font-family:var(--grotesk); font-size:.68rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:rgba(255,138,150,.66);}
+.ft-col a{width:fit-content; font-family:var(--body); font-size:.92rem; color:rgba(255,231,234,.7); text-decoration:none; transition:color .25s, transform .25s;}
+.ft-col a:hover{color:#fff; transform:translateX(3px);}
+.ft-divider{position:relative; z-index:6; width:min(88%,1180px); height:1px; margin:clamp(2.6rem,4.5vw,3.8rem) auto clamp(2.2rem,3.5vw,3rem); background:linear-gradient(90deg, transparent, rgba(255,255,255,.14), transparent);}
+#site-footer .ft-content{position:relative; z-index:6; width:100%; text-align:center; padding:0 6vw .9rem;}
+.ft-eyebrow{display:inline-flex; align-items:center; gap:.8rem; padding:.58rem 1.35rem; border-radius:999px; font-family:var(--grotesk); font-size:.7rem; font-weight:600; letter-spacing:.4em; text-transform:uppercase; color:rgba(255,235,237,.74); background:rgba(255,255,255,.045); border:1px solid rgba(255,255,255,.09); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); box-shadow:inset 0 1px 0 rgba(255,255,255,.09), 0 20px 50px rgba(0,0,0,.45);}
+.ft-eyebrow .dot{width:6px; height:6px; border-radius:50%; flex:none; background:linear-gradient(180deg,#FF7A84,#C0182A); box-shadow:0 0 12px rgba(255,82,96,.85);}
+.ft-wordmark{position:relative; z-index:4; width:100%; display:flex; justify-content:center; pointer-events:none; -webkit-mask-image:linear-gradient(180deg, transparent 3%, #000 27%, #000 73%, transparent 100%); mask-image:linear-gradient(180deg, transparent 3%, #000 27%, #000 73%, transparent 100%);}
+.ft-word{font-family:var(--grotesk); font-weight:600; font-size:clamp(2.6rem,11vw,13rem); letter-spacing:-.03em; line-height:.84; white-space:nowrap; text-align:center; background-size:150% 100%; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;}
+.ft-word-base{display:block; background-image:linear-gradient(96deg,#310E19 0%,#512031 24%,#6A2636 42%,#3C1320 58%,#5A1D2E 76%,#310E19 100%); animation:ftShimmer 17s ease-in-out infinite alternate;}
+.ft-word-glow{position:absolute; left:50%; top:0; transform:translateX(-50%); display:block; background-image:linear-gradient(96deg,#8E2233 0%,#C0182A 17%,#FF5E69 35%,#E23744 50%,#FF8088 66%,#C0182A 85%,#7E1E2E 100%); -webkit-mask-image:radial-gradient(circle 400px at var(--mx,-800px) var(--my,-800px), #000 0%, rgba(0,0,0,.86) 32%, rgba(0,0,0,.3) 62%, transparent 82%); mask-image:radial-gradient(circle 400px at var(--mx,-800px) var(--my,-800px), #000 0%, rgba(0,0,0,.86) 32%, rgba(0,0,0,.3) 62%, transparent 82%); filter:drop-shadow(0 6px 44px rgba(255,80,95,.42)); will-change:mask-position;}
+.ft-baseline{position:relative; z-index:6; display:flex; flex-wrap:wrap; max-width:44rem; margin-left:auto; margin-right:auto; align-items:center; justify-content:center; gap:.55rem; padding:1.4rem 6vw clamp(1.5rem,3vw,2.4rem); font-family:var(--grotesk); font-size:.65rem; font-weight:500; letter-spacing:.24em; text-transform:uppercase; color:rgba(255,223,226,.32);}
+.ft-baseline .ft-dot{opacity:.5;}
+@keyframes ftShimmer{from{background-position:0% 50%;} to{background-position:100% 50%;}}
+@media(max-width:640px){
+  #site-footer{padding-top:2.8rem;}
+  .ft-top{flex-direction:column; gap:1.9rem;}
+  .ft-nav{gap:1.9rem 3rem;}
+  .ft-divider{margin:2.2rem auto 1.9rem;}
+  .ft-wordmark{-webkit-mask-image:none; mask-image:none; margin-top:1.5rem;}
+  .ft-word{white-space:normal; font-size:clamp(2.4rem,13.5vw,5rem); line-height:.94;}
+  .ft-word-glow{left:0; transform:none; width:100%; -webkit-mask-image:none; mask-image:none; opacity:.92;}
+  .ft-baseline{max-width:24rem;}
+}
 .caveat{margin-top:2rem; padding:1.2rem 1.4rem; border-radius:14px; background:var(--surf); border:1px dashed var(--bd2); font-size:.8rem; color:var(--txt3); line-height:1.6;}
 .caveat b{color:var(--txt2);}
 
@@ -632,8 +675,35 @@ footer b{color:var(--txt2);}
   .reveal,.stg{transition:none; animation:none; opacity:1; transform:none;}
   .pp,.painlist .pp,.scroll-cue .chev,.hero-tag .dot,.app-top .live::before{animation:none !important;}
   .slab{transform:none !important;}
+  .ft-word-base{animation:none !important;}
 }
 @media (max-width:640px){ .wrap{padding:4rem 6vw;} .hero-stats{gap:.6rem;} .hstat{min-width:120px;} }
+
+/* ===== Responsive: keep horizontal teardown cards fully visible on any viewport height ===== */
+#hztrack{height:100%;}
+.comp-card{max-height:100%;}
+@media (max-height:760px){
+  .hz-inner{padding-top:2.2rem;}
+  #market .market-head{padding-bottom:.9rem;}
+  .comp-card{padding:1.35rem 1.4rem;}
+  .comp-card .logo{font-size:1.5rem;}
+  .comp-card .verdict{font-size:.66rem; margin-top:.2rem;}
+  .comp-card .big{font-size:clamp(1.5rem,3vw,2.1rem); margin-top:.55rem;}
+  .comp-card .big small{font-size:.76rem; margin-top:.32rem; line-height:1.32;}
+  .comp-card ul{margin-top:.65rem; gap:.4rem;}
+  .comp-card li{font-size:.79rem; line-height:1.32;}
+  .comp-card .gap{padding-top:.65rem; font-size:.78rem;}
+  .comp-idx{font-size:2.4rem;}
+}
+@media (max-height:650px){
+  .hz-inner{padding-top:1.5rem;}
+  .comp-card{padding:1.05rem 1.15rem;}
+  .comp-card .logo{font-size:1.3rem;}
+  .comp-card .big{font-size:clamp(1.3rem,2.5vw,1.7rem); margin-top:.4rem;}
+  .comp-card ul{margin-top:.5rem; gap:.3rem;}
+  .comp-card li{font-size:.73rem; line-height:1.28;}
+  .comp-card .gap{padding-top:.5rem; font-size:.74rem;}
+}
 </style>
 </head>
 <body>
@@ -730,11 +800,11 @@ footer b{color:var(--txt2);}
         <div id="mapStage"></div>
         <div class="map-legend">
           <span style="--c:#E23744"><i></i>Coordination Cost</span>
-          <span style="--c:#2E6FD4"><i></i>Discovery</span>
-          <span style="--c:#8A4DE6"><i></i>Collection</span>
-          <span style="--c:#E8920C"><i></i>Settlement</span>
-          <span style="--c:#0E9E80"><i></i>Timing</span>
-          <span style="--c:#D6336C"><i></i>Fulfillment</span>
+          <span style="--c:#5A8DF0"><i></i>Discovery</span>
+          <span style="--c:#9D6BF5"><i></i>Collection</span>
+          <span style="--c:#E6B23C"><i></i>Settlement</span>
+          <span style="--c:#20BD94"><i></i>Timing</span>
+          <span style="--c:#E85C86"><i></i>Fulfillment</span>
           <span class="ml-pulse">5 friction clusters · 18 failure points</span>
         </div>
       </div>
@@ -1325,12 +1395,45 @@ footer b{color:var(--txt2);}
         <p class="q">"Both Swiggy and Zomato shipped the cart. Neither shipped the <em>coordination</em>. That gap, presence, ready-check, fair split, is the leapfrog."</p>
         <div class="by">A Competitive Teardown &amp; Product Design Case Study · Group Ordering for Zomato</div>
       </div>
-      <footer>
-        Designed &amp; written as a Product Management portfolio piece · <b>Three.js · GSAP ScrollTrigger · custom SVG</b><br>
-        Frameworks: CIRCLES · RICE · North Star · K-Factor · CAC/LTV · MVP &amp; Trade-offs · GTM. Figures self-reported / press-cited where noted.
-      </footer>
-    </div>
-  </div>
+    </div><!-- /wrap -->
+    <footer id="site-footer" aria-label="Prakhar Beniwal — case study footer">
+      <div class="ft-layer ft-grain" aria-hidden="true"></div>
+      <div class="ft-layer ft-ambient" aria-hidden="true"></div>
+      <div class="ft-top">
+        <div class="ft-intro">
+          <span class="ft-tag">Product Management · Case Study</span>
+          <p class="ft-blurb">A competitive teardown and product design for group ordering, fixing the coordination cost that Swiggy and Zomato shipped a cart for, but left unsolved.</p>
+          <a class="ft-totop" href="#hero">Back to top <span>↑</span></a>
+        </div>
+        <nav class="ft-nav" aria-label="Footer">
+          <div class="ft-col">
+            <h4>The Case Study</h4>
+            <a href="#market">Competitive Teardown</a>
+            <a href="#journey">The Solution</a>
+            <a href="#business">The Business Case</a>
+            <a href="#metrics">KPIs &amp; Funnel</a>
+            <a href="#roadmap">Roadmap</a>
+          </div>
+          <div class="ft-col">
+            <h4>Connect</h4>
+            <a href="mailto:prakharbeniwal@gmail.com">Email</a>
+            <a href="https://www.linkedin.com/in/prakhar-beniwal-31b863216/" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://github.com/PrakharBeniwal" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </nav>
+      </div>
+      <div class="ft-divider"></div>
+      <div class="ft-content">
+        <span class="ft-eyebrow"><span class="dot"></span>A Case Study By</span>
+      </div>
+      <div class="ft-wordmark">
+        <span class="ft-word ft-word-base">PRAKHAR BENIWAL</span>
+        <span class="ft-word ft-word-glow" aria-hidden="true">PRAKHAR BENIWAL</span>
+      </div>
+      <div class="ft-layer ft-veil" aria-hidden="true"></div>
+      <div class="ft-baseline">Product Teardown &amp; Design <span class="ft-dot">·</span> 2026</div>
+    </footer>
+  </div><!-- /slab -->
 </section>
 
 </div><!-- /panels -->
@@ -1339,6 +1442,22 @@ footer b{color:var(--txt2);}
 /* ===================== reveal + stagger ===================== */
 const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target;const d=parseFloat(el.dataset.delay||0);el.style.transitionDelay=(d*0.08)+"s";if(el.classList.contains("stg"))el.style.animationDelay=(d*0.09)+"s";el.classList.add("in");io.unobserve(el);}});},{threshold:.12,rootMargin:"0px 0px -6% 0px"});
 document.querySelectorAll(".reveal,.stg").forEach(el=>io.observe(el));
+
+/* ===================== footer spotlight (flashlight, smoothly interpolated) ===================== */
+(function(){
+  const f=document.getElementById("site-footer"); if(!f) return;
+  const glow=f.querySelector(".ft-word-glow"); if(!glow) return;
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let tx=-800,ty=-800,cx=-800,cy=-800,raf=0;
+  const set=(x,y)=>{glow.style.setProperty("--mx",x.toFixed(1)+"px"); glow.style.setProperty("--my",y.toFixed(1)+"px");};
+  function loop(){
+    cx+=(tx-cx)*0.14; cy+=(ty-cy)*0.14; set(cx,cy);
+    if(Math.abs(tx-cx)>0.6||Math.abs(ty-cy)>0.6){ raf=requestAnimationFrame(loop); } else { set(tx,ty); raf=0; }
+  }
+  function nudge(){ if(reduce){ set(tx,ty); return; } if(!raf) raf=requestAnimationFrame(loop); }
+  f.addEventListener("pointermove",e=>{ const r=glow.getBoundingClientRect(); tx=e.clientX-r.left; ty=e.clientY-r.top; nudge(); },{passive:true});
+  f.addEventListener("pointerleave",()=>{ const r=glow.getBoundingClientRect(); tx=r.width/2; ty=-r.height*1.4; nudge(); });
+})();
 
 /* ===================== progress + sidenav ===================== */
 const progress=document.getElementById("progress");
@@ -1409,8 +1528,8 @@ addEventListener("load",initScrollFX);
   g.add(edge,phone,screen);
   // red ui lines on the screen
   for(let i=0;i<5;i++){ const line=P(1.9,0.16,i===0?0xE23744:0xFFC9C6,i===0?0.95:0.8); line.position.set(0,1.5-i*0.62,0.03); g.add(line); }
-  // floating cards: alternating white / red
-  const cols=[0xffffff,0xE23744,0xffffff,0xE23744,0xFFD9D5], cards=[];
+  // floating cards: deeper reds so they read against the bg without erasing the white headline + one soft pink
+  const cols=[0x9E0F22,0xC0182A,0x9E0F22,0xC0182A,0xFFD9D5], cards=[];
   cols.forEach((c,i)=>{ const card=P(1.65,0.5,c,0.92); card.position.set((i%2?1:-1)*(2.2+Math.random()*1.2),2-i*1.0,0.6+i*0.25); card.userData={sp:0.4+Math.random()*0.5,base:card.position.y,ph:i}; g.add(card); cards.push(card); });
   // presence dots
   for(let i=0;i<5;i++){ const d=P(0.3,0.3,i%2?0xffffff:0xFFB3B0,0.95); d.position.set(-1+i*0.5,2,0.45); g.add(d); }
@@ -1561,11 +1680,11 @@ addEventListener("load",initScrollFX);
   const NS="http://www.w3.org/2000/svg", W=1300,H=960,CX=650,CY=494, D2R=Math.PI/180;
   const el=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;};
   const CATS=[
-    {label:"Discovery",color:"#2E6FD4",ang:206,leaves:["Which restaurant?","No pre-cart vote","Decision deadlock"]},
-    {label:"Collection",color:"#8A4DE6",ang:268,leaves:["Pass the phone","40 WhatsApp pings","Items mixed up","Edit conflicts"]},
-    {label:"Settlement",color:"#E8920C",ang:332,leaves:["Host fronts bill","“I owe you ₹80”","Promise decays","No split-pay"]},
-    {label:"Fulfillment",color:"#D6336C",ang:50,leaves:["One unlabeled bag","“Whose biryani?”","Late large order"]},
-    {label:"Timing",color:"#0E9E80",ang:126,leaves:["Who’s ready?","Endless nagging","Someone AWOL","Order never fires"]}
+    {label:"Discovery",color:"#5A8DF0",c2:"#2E5BC0",ang:206,leaves:["Which restaurant?","No pre-cart vote","Decision deadlock"]},
+    {label:"Collection",color:"#9D6BF5",c2:"#6E3FC8",ang:268,leaves:["Pass the phone","40 WhatsApp pings","Items mixed up","Edit conflicts"]},
+    {label:"Settlement",color:"#E6B23C",c2:"#BC8516",tc:"#3A2410",ang:332,leaves:["Host fronts bill","“I owe you ₹80”","Promise decays","No split-pay"]},
+    {label:"Fulfillment",color:"#E85C86",c2:"#BC2E58",ang:50,leaves:["One unlabeled bag","“Whose biryani?”","Late large order"]},
+    {label:"Timing",color:"#20BD94",c2:"#0E8A68",ang:126,leaves:["Who’s ready?","Endless nagging","Someone AWOL","Order never fires"]}
   ];
   const R1=208, R2=170;
   const LFS=12.5, LCW=.66, LPAD=26, LH=31;   // leaf pill metrics (cw kept generous so text never overflows)
@@ -1599,24 +1718,33 @@ addEventListener("load",initScrollFX);
   // ---- draw ----
   const svg=el("svg",{viewBox:"0 0 "+W+" "+H,class:"map-svg",preserveAspectRatio:"xMidYMid meet"});
   const defs=el("defs",{});
-  const cg=el("radialGradient",{id:"coreGrad",cx:"50%",cy:"34%",r:"72%"});
-  cg.appendChild(el("stop",{offset:"0%","stop-color":"#F2545B"}));cg.appendChild(el("stop",{offset:"58%","stop-color":"#E23744"}));cg.appendChild(el("stop",{offset:"100%","stop-color":"#B0152A"}));
-  defs.appendChild(cg); svg.appendChild(defs);
-  const gEdge=el("g",{}),gNode=el("g",{}); svg.appendChild(gEdge);svg.appendChild(gNode);
+  const cg=el("radialGradient",{id:"coreGrad",cx:"50%",cy:"30%",r:"78%"});
+  cg.appendChild(el("stop",{offset:"0%","stop-color":"#FF6F78"}));cg.appendChild(el("stop",{offset:"54%","stop-color":"#E23744"}));cg.appendChild(el("stop",{offset:"100%","stop-color":"#960F23"}));
+  defs.appendChild(cg);
+  const ag=el("radialGradient",{id:"ambGlow",cx:"50%",cy:"50%",r:"50%"});
+  ag.appendChild(el("stop",{offset:"0%","stop-color":"#E2455A","stop-opacity":".16"}));ag.appendChild(el("stop",{offset:"100%","stop-color":"#E2455A","stop-opacity":"0"}));
+  defs.appendChild(ag);
+  CATS.forEach((c,i)=>{const lg=el("linearGradient",{id:"cat"+i,x1:"0",y1:"0",x2:"0",y2:"1"});
+    lg.appendChild(el("stop",{offset:"0%","stop-color":c.color}));lg.appendChild(el("stop",{offset:"100%","stop-color":c.c2}));defs.appendChild(lg);});
+  svg.appendChild(defs);
+  const gBack=el("g",{}),gEdge=el("g",{}),gNode=el("g",{}); svg.appendChild(gBack);svg.appendChild(gEdge);svg.appendChild(gNode);
+  gBack.appendChild(el("circle",{cx:CX,cy:CY,r:470,fill:"url(#ambGlow)"}));
   CATS.forEach(c=>{
-    gEdge.appendChild(el("line",{x1:CX,y1:CY,x2:c.x,y2:c.y,stroke:c.color,"stroke-width":3,"stroke-opacity":.45,"stroke-linecap":"round"}));
-    c.lp.forEach(lp=>gEdge.appendChild(el("line",{x1:c.x,y1:c.y,x2:lp.x,y2:lp.y,stroke:c.color,"stroke-width":1.7,"stroke-opacity":.3,"stroke-linecap":"round"})));
+    gEdge.appendChild(el("line",{x1:CX,y1:CY,x2:c.x,y2:c.y,stroke:c.color,"stroke-width":2.4,"stroke-opacity":.5,"stroke-linecap":"round"}));
+    c.lp.forEach(lp=>gEdge.appendChild(el("line",{x1:c.x,y1:c.y,x2:lp.x,y2:lp.y,stroke:c.color,"stroke-width":1.4,"stroke-opacity":.3,"stroke-linecap":"round"})));
   });
   function pill(g,x,y,text,o){
     const w=Math.max(text.length*o.fs*o.cw+o.pad,o.h);
-    const rect=el("rect",{x:x-w/2,y:y-o.h/2,width:w,height:o.h,rx:o.h/2,fill:o.fill,stroke:o.stroke||"none","stroke-width":o.sw||0});
-    rect.style.filter=o.shadow;
+    const rect=el("rect",{x:x-w/2,y:y-o.h/2,width:w,height:o.h,rx:o.h/2,fill:o.fill});
+    if(o.stroke){rect.setAttribute("stroke",o.stroke);rect.setAttribute("stroke-width",o.sw||1);if(o.so!=null)rect.setAttribute("stroke-opacity",o.so);}
+    if(o.shadow)rect.style.filter=o.shadow;
     const t=el("text",{x:x,y:y,"text-anchor":"middle","dominant-baseline":"central",fill:o.tcolor,"font-size":o.fs,"font-weight":o.bold?700:600,"font-family":"Poppins, sans-serif","letter-spacing":"-.2px"});
     t.textContent=text; g.appendChild(rect); g.appendChild(t);
   }
-  CATS.forEach(c=>c.lp.forEach(lp=>pill(gNode,lp.x,lp.y,lp.label,{fs:LFS,cw:LCW,h:LH,pad:LPAD,fill:"#FFFFFF",stroke:c.color,sw:1.4,tcolor:"#3A2A30",shadow:"drop-shadow(0 2px 6px rgba(120,12,22,.10))"})));
-  CATS.forEach(c=>pill(gNode,c.x,c.y,c.label,{fs:CFS,cw:CCW,h:CH,pad:CPAD,fill:c.color,tcolor:"#FFFFFF",bold:true,shadow:"drop-shadow(0 5px 11px rgba(120,12,22,.18))"}));
-  const coreC=el("circle",{cx:CX,cy:CY,r:58,fill:"url(#coreGrad)",stroke:"rgba(255,255,255,.42)","stroke-width":1.6}); coreC.style.filter="drop-shadow(0 7px 18px rgba(168,19,42,.28))"; gNode.appendChild(coreC);
+  CATS.forEach(c=>c.lp.forEach(lp=>pill(gNode,lp.x,lp.y,lp.label,{fs:LFS,cw:LCW,h:LH,pad:LPAD,fill:"#2C1622",stroke:c.color,sw:1.3,so:.7,tcolor:"#EFE3E9",shadow:"drop-shadow(0 3px 10px rgba(0,0,0,.42))"})));
+  CATS.forEach((c,i)=>pill(gNode,c.x,c.y,c.label,{fs:CFS,cw:CCW,h:CH,pad:CPAD,fill:"url(#cat"+i+")",stroke:"rgba(255,255,255,.22)",sw:1,tcolor:c.tc||"#FFFFFF",bold:true,shadow:"drop-shadow(0 4px 16px "+c.color+"66)"}));
+  gNode.appendChild(el("circle",{cx:CX,cy:CY,r:74,fill:"none",stroke:"rgba(255,214,170,.16)","stroke-width":1}));
+  const coreC=el("circle",{cx:CX,cy:CY,r:58,fill:"url(#coreGrad)",stroke:"rgba(255,216,176,.5)","stroke-width":1.6}); coreC.style.filter="drop-shadow(0 0 28px rgba(226,55,68,.55))"; gNode.appendChild(coreC);
   const ct=el("text",{x:CX,y:CY,"text-anchor":"middle",fill:"#fff","font-family":"Poppins, sans-serif","font-weight":700});
   const t1=el("tspan",{x:CX,dy:"-0.2em","font-size":17.5}); t1.textContent="Coordination"; const t2=el("tspan",{x:CX,dy:"1.2em","font-size":17.5}); t2.textContent="Cost"; ct.appendChild(t1);ct.appendChild(t2); gNode.appendChild(ct);
   stage.appendChild(svg);
